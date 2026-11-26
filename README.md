@@ -1,5 +1,7 @@
 # Claude Code Figma — free MCP server + plugin
 
+> **Step-by-step guide:** [How to Run a Figma MCP Server 24/7 on a Headless Linux VPS](https://www.prosamik.com/blogs/figma-mcp-server-linux-vps-headless) on [prosamik.com](https://www.prosamik.com): why you'd run it on a server, the full setup with screenshots, troubleshooting and security.
+
 Let **Claude Code, Codex, Cursor or any MCP client** read and edit your real Figma files: create and
 restyle frames, change text, rename and move layers, and **bulk-export hundreds of frames to disk**.
 No Figma API plan or paid seat is needed; it drives the Figma desktop app through a local plugin.
