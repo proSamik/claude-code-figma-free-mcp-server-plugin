@@ -1,15 +1,28 @@
 {
-  "name": "cursor-talk-to-figma-mcp",
-  "description": "Cursor Talk to Figma MCP",
-  "version": "0.3.5",
+  "name": "claude-code-figma-free-mcp-server-plugin",
+  "description": "Free Figma MCP server + plugin for Claude Code, Codex and other MCP clients: read and edit real Figma files, bulk export, and a 24/7 headless Linux setup. Fork of cursor-talk-to-figma-mcp.",
+  "version": "0.4.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/proSamik/claude-code-figma-free-mcp-server-plugin.git"
+  },
+  "homepage": "https://github.com/proSamik/claude-code-figma-free-mcp-server-plugin#readme",
+  "bugs": {
+    "url": "https://github.com/proSamik/claude-code-figma-free-mcp-server-plugin/issues"
+  },
   "module": "dist/server.js",
   "main": "dist/server.js",
   "bin": {
+    "claude-code-figma-mcp": "dist/server.js",
     "cursor-talk-to-figma-mcp": "dist/server.js"
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "src/socket.ts",
+    "src/channel.ts",
+    "src/cursor_mcp_plugin",
+    "deploy"
   ],
   "type": "module",
   "scripts": {
@@ -34,5 +47,15 @@
     "uuid": "latest",
     "ws": "latest",
     "zod": "3.22.4"
-  }
+  },
+  "keywords": [
+    "figma",
+    "mcp",
+    "model-context-protocol",
+    "claude-code",
+    "codex",
+    "figma-plugin",
+    "headless",
+    "bulk-export"
+  ]
 }

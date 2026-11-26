@@ -1,0 +1,10 @@
+[Unit]
+Description=Every 5 minutes, check the plugin answers and restart it if not
+
+[Timer]
+OnBootSec=4min
+OnUnitActiveSec=5min
+Unit=figma-autostart.service
+
+[Install]
+WantedBy=timers.target

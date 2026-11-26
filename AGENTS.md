@@ -47,27 +47,17 @@ Runs inside Figma. `code.js` is the plugin main thread handling 30+ commands via
 
 1. Run `bun setup` — installs dependencies and writes MCP config for both Cursor (`.cursor/mcp.json`) and Claude Code (`.mcp.json`)
 2. `bun socket` in one terminal (WebSocket relay on port 3055)
-3. In Figma: Plugins → Development → Link existing plugin → select `src/cursor_mcp_plugin/manifest.json`
+3. In Figma: Plugins → Development → Import plugin from manifest → select `src/cursor_mcp_plugin/manifest.json`
 4. Run plugin in Figma, join a channel, then use tools from Cursor or Claude Code
 
-The MCP config written by `bun setup` uses the published package:
-
-```json
-{
-  "mcpServers": {
-    "TalkToFigma": {
-      "command": "bunx",
-      "args": ["cursor-talk-to-figma-mcp@latest"]
-    }
-  }
-}
-```
-
-You can also add it manually for Claude Code via the CLI:
+This fork is not published to npm. Run the MCP server from this checkout:
 
 ```bash
-claude mcp add TalkToFigma -- bunx cursor-talk-to-figma-mcp@latest
+claude mcp add --scope user TalkToFigma -- bun run /path/to/repo/dist/server.js
+codex mcp add TalkToFigma -- bun run /path/to/repo/dist/server.js
 ```
+
+`bun setup` writes `.mcp.json` / `.cursor/mcp.json` pointing at `dist/server.js`. A 24/7 headless Linux setup lives in `deploy/linux/` (see README).
 
 ## Agent Notes
 
