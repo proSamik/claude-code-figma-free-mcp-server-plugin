@@ -34,7 +34,8 @@
     "dev": "bun run build:watch",
     "pub:release": "bun run build && npm publish",
     "test": "bun run build && bun test tests",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "release": "./scripts/release.sh"
   },
   "devDependencies": {
     "@types/bun": "latest",
