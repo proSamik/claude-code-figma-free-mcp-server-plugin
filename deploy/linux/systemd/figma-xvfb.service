@@ -1,0 +1,11 @@
+[Unit]
+Description=Virtual display for headless figma-linux
+
+[Service]
+EnvironmentFile=%h/.config/claude-code-figma/env
+ExecStart=/bin/sh -c 'exec /usr/bin/Xvfb "$FIGMA_DISPLAY" -screen 0 "$FIGMA_SCREEN" -nolisten tcp'
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

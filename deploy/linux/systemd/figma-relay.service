@@ -1,0 +1,13 @@
+[Unit]
+Description=Claude Code Figma MCP relay (WebSocket, channel router)
+After=network-online.target
+
+[Service]
+EnvironmentFile=%h/.config/claude-code-figma/env
+WorkingDirectory=%h/claude-code-figma-free-mcp-server-plugin
+ExecStart=/bin/sh -c 'HOST="$RELAY_HOST" PORT="$RELAY_PORT" exec "$HOME/.bun/bin/bun" run src/socket.ts'
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target

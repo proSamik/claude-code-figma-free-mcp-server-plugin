@@ -1,3 +1,5 @@
+> **Note:** this is the original upstream setup guide for Cursor. For Claude Code, Codex and the headless Linux server setup, see [README.md](README.md).
+
 # README for AI Agent: Cursor-Figma MCP Setup Guide
 
 ## 🤖 AI Agent Decision Flow
@@ -358,8 +360,8 @@ graph TD
 1. **Verify project structure**:
 
 ```bash
-# Verify current directory (should already be in cursor-talk-to-figma-mcp)
-pwd | grep "cursor-talk-to-figma-mcp" && echo "✅ Correct directory" || echo "❌ ERROR: Wrong directory"
+# Verify current directory (should already be in the repo folder)
+pwd | grep -E "claude-code-figma-free-mcp-server-plugin|cursor-talk-to-figma-mcp" && echo "✅ Correct directory" || echo "❌ ERROR: Wrong directory"
 
 # Verify project structure
 ls package.json src && echo "✅ Project structure valid" || echo "❌ ERROR: Invalid project structure"
@@ -489,8 +491,8 @@ graph TD
 1. **Verify project setup**:
 
 ```bash
-# Verify current directory (should already be in cursor-talk-to-figma-mcp)
-pwd | grep "cursor-talk-to-figma-mcp" && echo "✅ Correct directory" || echo "❌ ERROR: Wrong directory"
+# Verify current directory (should already be in the repo folder)
+pwd | grep -E "claude-code-figma-free-mcp-server-plugin|cursor-talk-to-figma-mcp" && echo "✅ Correct directory" || echo "❌ ERROR: Wrong directory"
 
 # Verify and setup
 ls package.json src && echo "✅ Project structure valid" || echo "❌ ERROR: Invalid project structure"
@@ -573,8 +575,8 @@ graph TD
 ### Step B.2: Setup Dependencies in Cursor
 
 ```bash
-# Verify current directory (should already be in cursor-talk-to-figma-mcp)
-pwd | grep "cursor-talk-to-figma-mcp" && echo "✅ Correct directory" || echo "❌ ERROR: Wrong directory"
+# Verify current directory (should already be in the repo folder)
+pwd | grep -E "claude-code-figma-free-mcp-server-plugin|cursor-talk-to-figma-mcp" && echo "✅ Correct directory" || echo "❌ ERROR: Wrong directory"
 
 # Verify project structure
 ls package.json src && echo "✅ Project structure valid" || echo "❌ ERROR: Invalid project structure"
@@ -662,8 +664,8 @@ Progress: Method B 100% Complete ✅ - Proceeding to Common Steps
 **🚨 CRITICAL FOR AI AGENTS**: Project is already cloned and open in Cursor.
 
 ```bash
-# Verify current directory (should already be in cursor-talk-to-figma-mcp)
-pwd | grep "cursor-talk-to-figma-mcp" && echo "✅ Correct directory" || echo "❌ ERROR: Wrong directory"
+# Verify current directory (should already be in the repo folder)
+pwd | grep -E "claude-code-figma-free-mcp-server-plugin|cursor-talk-to-figma-mcp" && echo "✅ Correct directory" || echo "❌ ERROR: Wrong directory"
 
 # Verify project structure
 ls package.json src && echo "✅ Project structure valid" || echo "❌ ERROR: Invalid project structure"

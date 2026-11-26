@@ -1,0 +1,12 @@
+[Unit]
+Description=Open the Figma file and start the plugin in headless Figma
+After=figma-headless.service figma-relay.service
+Wants=figma-headless.service figma-relay.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/claude-code-figma-free-mcp-server-plugin/deploy/linux/bin/figma-autostart.sh
+TimeoutStartSec=600
+
+[Install]
+WantedBy=default.target

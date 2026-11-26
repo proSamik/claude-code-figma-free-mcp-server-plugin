@@ -1,0 +1,4 @@
+#!/bin/sh
+# figma-linux opens links with xdg-open. On a headless server there is no browser,
+# so record the URL instead (figma-login.sh reads the sign-in link from here).
+echo "$(date -Is) $*" >> "${XDG_STATE_HOME:-$HOME/.local/state}/claude-code-figma/opened-urls.log"

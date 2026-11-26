@@ -1,0 +1,14 @@
+[Unit]
+Description=figma-linux on the virtual display (DevTools on 127.0.0.1:9222)
+After=figma-xvfb.service figma-relay.service
+Requires=figma-xvfb.service
+
+[Service]
+EnvironmentFile=%h/.config/claude-code-figma/env
+UnsetEnvironment=WAYLAND_DISPLAY
+ExecStart=/bin/sh -c 'export DISPLAY="$FIGMA_DISPLAY" PATH="$REPO_DIR/deploy/linux/bin:/usr/local/bin:/usr/bin:/bin"; exec /usr/bin/figma-linux --ozone-platform=x11 --remote-debugging-port=9222 --remote-debugging-address=127.0.0.1'
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
