@@ -1,0 +1,48 @@
+name: Release
+
+# Push a tag like v0.4.0 to build, test and publish a GitHub release with a
+# self-contained zip (bundled MCP server, relay and Figma plugin).
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing tag to (re)publish, e.g. v0.4.0"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag || github.ref }}
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun run typecheck
+      - name: Create local main (the e2e test reads tools from main)
+        run: git branch -f main origin/main
+      - run: bun run test
+      - name: Build release
+        id: build
+        run: |
+          TAG="${{ inputs.tag || github.ref_name }}"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          scripts/release.sh "$TAG"
+      - name: Smoke-test the bundled server with Node (no node_modules)
+        run: |
+          D=$(mktemp -d); cp release/claude-code-figma-mcp-v*/server.js "$D/"
+          printf '%s\n' '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"ci","version":"1"}}}' \
+            | (cd "$D" && timeout 10 node server.js 2>/dev/null) | grep -q '"serverInfo"'
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${{ steps.build.outputs.tag }}"
+          gh release view "$TAG" >/dev/null 2>&1 && gh release upload "$TAG" release/*.zip release/*.js --clobber \
+            || gh release create "$TAG" release/*.zip release/*.js --title "$TAG" --generate-notes

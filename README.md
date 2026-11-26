@@ -58,6 +58,16 @@ Works on macOS, Windows and Linux desktops with the Figma desktop app
 The plugin must stay open while the agent works. Closing it or the file disconnects; run it again to
 get a new channel.
 
+## Download a release (no build needed)
+
+Every tagged version is on the [Releases page](https://github.com/proSamik/claude-code-figma-free-mcp-server-plugin/releases)
+as a self-contained zip: `server.js` (MCP server with all libraries bundled; runs on Node 18+ or Bun),
+`relay.js` (run with `bun relay.js`) and `figma-plugin/`. Unzip it, start the relay, import
+`figma-plugin/manifest.json` in Figma and point your agent at `node /path/to/server.js`. The zip's own
+README has the exact commands. To build one yourself: `bun run release`.
+
+Maintainers: push a tag like `v0.4.1` and the Release workflow tests, builds and publishes it.
+
 ## Add the MCP server to your agent
 
 **Claude Code** (all projects):
